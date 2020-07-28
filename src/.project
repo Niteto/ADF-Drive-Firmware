@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>adf-drive-1050</name>
+	<comment>Copyright Dominik Tonn</comment>
+	<projects>ADF-Copy/Drive Project
+	</projects>
+	<buildSpec>Teensy 3.2 Microcontroller
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>
