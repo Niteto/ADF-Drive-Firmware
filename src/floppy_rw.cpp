@@ -579,6 +579,7 @@ extern "C"
           Serial.write(&stream[8192 + i * paketsize], paketsize);
         }
         // Serial.write(&stream[8192], 8192);
+        packetCnt++;
       }
       else
       {
