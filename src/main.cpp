@@ -739,11 +739,16 @@ void doCommand()
   if (cmd == "info")
   {
     printStatus();
+    Serial.printf("FailureCode: %x Blinkcode: %x\n", failureCode, blinkCode);
     Serial.print("Pin0: ");
     Serial.println(digitalRead(0));
     for (int i = 0; i < 94; i++)
       if (NVIC_IS_ENABLED(i))
         Serial.printf("Irq: %d Prio: %d Enabled: %d\n", i, NVIC_GET_PRIORITY(i), 1);
+    int *mallocEnd;
+    mallocEnd = (int*) malloc(4);
+    Serial.printf("malloc@: 0x%.8lX:0x%.8lX\n", &mallocEnd, mallocEnd);
+    free(mallocEnd);
 //Serial.printf("FreeStack: %d\n", FreeStack());
 #include "kinetis.h"
     // extern unsigned long _stext;

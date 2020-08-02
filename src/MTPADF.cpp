@@ -1311,11 +1311,11 @@ uint32_t MTPD::SendObjectInfo(uint32_t storage, uint32_t parent)
   Serial.printf("%2d.%2d.%4d\n", day, mon, year);
 #endif
   adfSetCurrentTime(year, mon, day - 1, hour, min, sec);
-  Serial.println(usb_queue_byte_count(data_buffer_));
+  // Serial.println(usb_queue_byte_count(data_buffer_));
   readstring(NULL);
-  Serial.println(usb_queue_byte_count(data_buffer_));
+  // Serial.println(usb_queue_byte_count(data_buffer_));
   readstring(NULL);
-  Serial.println(usb_queue_byte_count(data_buffer_));
+  // Serial.println(usb_queue_byte_count(data_buffer_));
   //read_until_short_packet();  // ignores dates & keywords
   // if (storage == SDid)
   //   return storage_->Create(parent, dir, filename);
@@ -1343,16 +1343,17 @@ uint32_t MTPD::SendObjectInfo(uint32_t storage, uint32_t parent)
     }
     else
     {
-      if (sendObjectFile != 0)
-      {
-        Serial.println("[MTP]sendObjectfile != NULL");
-        if (sendObjectFile->currentExt)
-          free(sendObjectFile->currentExt);
-        if (sendObjectFile->currentData)
-          free(sendObjectFile->currentData);
-        free(sendObjectFile->fileHdr);
-        free(sendObjectFile);
-      }
+      // check for errors !!!
+      //  if (sendObjectFile != 0)
+      // {
+      //   Serial.println("[MTP]sendObjectfile != NULL");
+      //   if (sendObjectFile->currentExt)
+      //   //   free(sendObjectFile->currentExt);
+      //   if (sendObjectFile->currentData)
+      //     free(sendObjectFile->currentData);
+      //   free(sendObjectFile->fileHdr);
+      //   free(sendObjectFile);
+      // }
       sendObjectFile = adfOpenFile(vol, filename, (char *)"w");
     }
     if (!sendObjectFile)

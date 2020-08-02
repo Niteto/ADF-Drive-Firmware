@@ -74,7 +74,7 @@ boolean getDensity = false;
   {
 #ifdef debug
     //if (!motor) Serial.println("driveSelect");
-    digitalWrite(13, HIGH);
+    //digitalWrite(13, HIGH);
 #endif
     digitalWriteFast(_drivesel, LOW);
     delayMicroseconds(settings.driveSelectDelay);
@@ -84,7 +84,7 @@ boolean getDensity = false;
   {
 #ifdef debug
     //if (!motor) Serial.println("driveDeselect");
-    digitalWrite(13, LOW);
+    //digitalWrite(13, LOW);
 #endif
     digitalWriteFast(_drivesel, HIGH);
     delayMicroseconds(settings.driveDeselectDelay);

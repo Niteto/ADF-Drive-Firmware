@@ -5,10 +5,10 @@
 #define VARS_N_DEFS_H
 
 #include <Arduino.h>
-#define Version "v1.110"
-#define numVersion 1110
+#define Version "v1.111"
+#define numVersion 1111
 /* Debug and Modes */
-//#define debug //uncomment for main debug messages
+// #define debug //uncomment for main debug messages
 #define mtpmode          // enables USB MTP support
 #define mtpModeOn 1
 #define hdmode           // enables HD Disk funktions

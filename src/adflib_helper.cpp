@@ -15,7 +15,8 @@
 //#include "icons.h"
 //#include "MTPADF.h"
 extern MTPD mtpd;
-struct List *list, *cell;
+struct List *list = NULL;
+struct List *cell = NULL;
 struct Device *dev;
 struct Volume *vol;
 
@@ -25,17 +26,34 @@ struct Volume *vol;
 */
 int getNumAmigaFiles(uint32_t dirBlock)
 {
+  int num = 0;
+#ifdef debugmtp
+  if (list == NULL)
+    Serial.println("getNumAmigaFiles: list == NULL");
+  else
+  {
+    while (cell)
+    {
+      num++;
+      cell = cell->next;
+    }
+    Serial.printf("getNumAmigaFiles: list@ 0x%.8lX contains %d entries\n", list, num);
+  }
+#endif
   if (dirBlock == 0xffffffff)
     vol->curDirPtr = vol->rootBlock;
   else
     vol->curDirPtr = dirBlock & 0x00000fff;
   cell = list = adfGetDirEnt(vol, vol->curDirPtr);
-  int num = 0;
+  num = 0;
   while (cell)
   {
     num++;
     cell = cell->next;
   }
+#ifdef debugmtp
+  Serial.printf("getNumAmigaFiles: new list@ 0x%.8lX contains %d entries\n", list, num);
+#endif
   return num;
 }
 

@@ -57,25 +57,24 @@ void errorLed()
     digitalWriteFast(13, LOW);
     return;
   }
-  blinkCode = ((blinkCode & 0x8000) ? 0x01 : 0x00) | (blinkCode << 1);
-  digitalWriteFast(13, blinkCode & 0x0001);
+  else
+  {
+    blinkCode = ((blinkCode & 0x8000) ? 0x01 : 0x00) | (blinkCode << 1);
+    digitalWriteFast(13, blinkCode & 0x0001);
+  }
 }
 
 void startErrorLed()
 {
-#ifdef errLed
   pinMode(13, OUTPUT);
   digitalWrite(13, LOW);
   errorTimer.priority(255);
   errorTimer.begin(errorLed, 250000);
-#endif //errLed
 }
 
 void stopErrorLed()
 {
-#ifdef errLed
   errorTimer.end();
-#endif //errLed
 }
 #endif
 /*
